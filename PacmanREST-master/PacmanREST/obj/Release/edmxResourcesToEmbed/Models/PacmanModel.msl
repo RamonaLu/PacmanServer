@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pacmanAndroidNew_dbModelStoreContainer" CdmEntityContainer="pacmanAndroidNew_dbEntities">
+    <EntitySetMapping Name="Pacman_carer_db">
+      <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_carer_db">
+        <MappingFragment StoreEntitySet="Pacman_carer_db">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="device_id" ColumnName="device_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacman_carer_patient_db">
+      <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_carer_patient_db">
+        <MappingFragment StoreEntitySet="Pacman_carer_patient_db">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="id_carer" ColumnName="id_carer" />
+          <ScalarProperty Name="id_patient" ColumnName="id_patient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacman_fence_db">
+      <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_fence_db">
+        <MappingFragment StoreEntitySet="Pacman_fence_db">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="id_location" ColumnName="id_location" />
+          <ScalarProperty Name="radius" ColumnName="radius" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id_carer" ColumnName="id_carer" />
+          <ScalarProperty Name="id_patient" ColumnName="id_patient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacman_location_db">
+      <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_location_db">
+        <MappingFragment StoreEntitySet="Pacman_location_db">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="coordinates_x" ColumnName="coordinates_x" />
+          <ScalarProperty Name="coordinates_y" ColumnName="coordinates_y" />
+          <ScalarProperty Name="id_patient" ColumnName="id_patient" />
+          <ScalarProperty Name="id_carer" ColumnName="id_carer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacman_patient_db">
+      <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_patient_db">
+        <MappingFragment StoreEntitySet="Pacman_patient_db">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="device_id" ColumnName="device_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

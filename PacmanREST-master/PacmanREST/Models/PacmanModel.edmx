@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="pacmanAndroidNew_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Pacman_carer_db">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone" Type="int" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="device_id" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pacman_carer_patient_db">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_carer" Type="int" Nullable="false" />
+          <Property Name="id_patient" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pacman_fence_db">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_location" Type="int" Nullable="false" />
+          <Property Name="radius" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_carer" Type="int" Nullable="false" />
+          <Property Name="id_patient" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pacman_location_db">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="coordinates_x" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="coordinates_y" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="id_patient" Type="int" />
+          <Property Name="id_carer" Type="int" />
+        </EntityType>
+        <EntityType Name="Pacman_patient_db">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="device_id" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="pacmanAndroidNew_dbModelStoreContainer">
+          <EntitySet Name="Pacman_carer_db" EntityType="Self.Pacman_carer_db" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacman_carer_patient_db" EntityType="Self.Pacman_carer_patient_db" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacman_fence_db" EntityType="Self.Pacman_fence_db" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacman_location_db" EntityType="Self.Pacman_location_db" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacman_patient_db" EntityType="Self.Pacman_patient_db" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pacmanAndroidNew_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Pacman_carer_db">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="device_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Fences" Relationship="pacmanAndroidNew_dbModel.FencePacman_carer_db" FromRole="Pacman_carer_db" ToRole="Fence" />
+        </EntityType>
+        <EntityType Name="Pacman_carer_patient_db">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_carer" Type="Int32" Nullable="false" />
+          <Property Name="id_patient" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pacman_fence_db">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_location" Type="Int32" Nullable="false" />
+          <Property Name="radius" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_carer" Type="Int32" Nullable="false" />
+          <Property Name="id_patient" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pacman_location_db">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="coordinates_x" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="coordinates_y" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="id_patient" Type="Int32" />
+          <Property Name="id_carer" Type="Int32" />
+          <NavigationProperty Name="Patient" Relationship="pacmanAndroidNew_dbModel.Pacman_location_dbPacman_patient_db" FromRole="Pacman_location_db" ToRole="Pacman_patient_db" />
+          <Property Name="Pacman_patient_dbID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pacman_patient_db">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="device_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Fences" Relationship="pacmanAndroidNew_dbModel.FencePacman_patient_db" FromRole="Pacman_patient_db" ToRole="Fence" />
+          <NavigationProperty Name="Locations" Relationship="pacmanAndroidNew_dbModel.Pacman_location_dbPacman_patient_db" FromRole="Pacman_patient_db" ToRole="Pacman_location_db" />
+        </EntityType>
+        <EntityContainer Name="pacmanAndroidNew_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Pacman_carer_db" EntityType="Self.Pacman_carer_db" />
+          <EntitySet Name="Pacman_carer_patient_db" EntityType="Self.Pacman_carer_patient_db" />
+          <EntitySet Name="Pacman_fence_db" EntityType="Self.Pacman_fence_db" />
+          <EntitySet Name="Pacman_location_db" EntityType="Self.Pacman_location_db" />
+          <EntitySet Name="Pacman_patient_db" EntityType="Self.Pacman_patient_db" />
+          <EntitySet Name="Fences" EntityType="pacmanAndroidNew_dbModel.Fence" />
+          <AssociationSet Name="FencePacman_carer_db" Association="pacmanAndroidNew_dbModel.FencePacman_carer_db">
+            <End Role="Fence" EntitySet="Fences" />
+            <End Role="Pacman_carer_db" EntitySet="Pacman_carer_db" />
+          </AssociationSet>
+          <AssociationSet Name="FencePacman_patient_db" Association="pacmanAndroidNew_dbModel.FencePacman_patient_db">
+            <End Role="Fence" EntitySet="Fences" />
+            <End Role="Pacman_patient_db" EntitySet="Pacman_patient_db" />
+          </AssociationSet>
+          <EntitySet Name="FencePoints" EntityType="pacmanAndroidNew_dbModel.FencePoint" />
+          <AssociationSet Name="FenceFencePoint" Association="pacmanAndroidNew_dbModel.FenceFencePoint">
+            <End Role="Fence" EntitySet="Fences" />
+            <End Role="FencePoint" EntitySet="FencePoints" />
+          </AssociationSet>
+          <AssociationSet Name="Pacman_location_dbPacman_patient_db" Association="pacmanAndroidNew_dbModel.Pacman_location_dbPacman_patient_db">
+            <End Role="Pacman_location_db" EntitySet="Pacman_location_db" />
+            <End Role="Pacman_patient_db" EntitySet="Pacman_patient_db" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Fence">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Carer" Relationship="pacmanAndroidNew_dbModel.FencePacman_carer_db" FromRole="Fence" ToRole="Pacman_carer_db" />
+          <Property Name="Pacman_carer_dbID" Type="Int32" Nullable="false" />
+          <Property Name="Pacman_patient_dbID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="pacmanAndroidNew_dbModel.FencePacman_patient_db" FromRole="Fence" ToRole="Pacman_patient_db" />
+          <NavigationProperty Name="FencePoints" Relationship="pacmanAndroidNew_dbModel.FenceFencePoint" FromRole="Fence" ToRole="FencePoint" />
+        </EntityType>
+        <Association Name="FencePacman_carer_db">
+          <End Type="pacmanAndroidNew_dbModel.Fence" Role="Fence" Multiplicity="*" />
+          <End Type="pacmanAndroidNew_dbModel.Pacman_carer_db" Role="Pacman_carer_db" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Pacman_carer_db">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Fence">
+              <PropertyRef Name="Pacman_carer_dbID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FencePacman_patient_db">
+          <End Type="pacmanAndroidNew_dbModel.Fence" Role="Fence" Multiplicity="*" />
+          <End Type="pacmanAndroidNew_dbModel.Pacman_patient_db" Role="Pacman_patient_db" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Pacman_patient_db">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Fence">
+              <PropertyRef Name="Pacman_patient_dbID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FencePoint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Fence" Relationship="pacmanAndroidNew_dbModel.FenceFencePoint" FromRole="FencePoint" ToRole="Fence" />
+          <Property Name="FenceID" Type="Int32" Nullable="false" />
+          <Property Name="XCoordinate" Type="Decimal" Nullable="false" />
+          <Property Name="YCoordinate" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <Association Name="FenceFencePoint">
+          <End Type="pacmanAndroidNew_dbModel.Fence" Role="Fence" Multiplicity="1" />
+          <End Type="pacmanAndroidNew_dbModel.FencePoint" Role="FencePoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fence">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FencePoint">
+              <PropertyRef Name="FenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pacman_location_dbPacman_patient_db">
+          <End Type="pacmanAndroidNew_dbModel.Pacman_location_db" Role="Pacman_location_db" Multiplicity="*" />
+          <End Type="pacmanAndroidNew_dbModel.Pacman_patient_db" Role="Pacman_patient_db" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Pacman_patient_db">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pacman_location_db">
+              <PropertyRef Name="Pacman_patient_dbID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pacmanAndroidNew_dbModelStoreContainer" CdmEntityContainer="pacmanAndroidNew_dbEntities">
+          <EntitySetMapping Name="Pacman_carer_db">
+            <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_carer_db">
+              <MappingFragment StoreEntitySet="Pacman_carer_db">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="device_id" ColumnName="device_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacman_carer_patient_db">
+            <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_carer_patient_db">
+              <MappingFragment StoreEntitySet="Pacman_carer_patient_db">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="id_carer" ColumnName="id_carer" />
+                <ScalarProperty Name="id_patient" ColumnName="id_patient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacman_fence_db">
+            <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_fence_db">
+              <MappingFragment StoreEntitySet="Pacman_fence_db">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="id_location" ColumnName="id_location" />
+                <ScalarProperty Name="radius" ColumnName="radius" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id_carer" ColumnName="id_carer" />
+                <ScalarProperty Name="id_patient" ColumnName="id_patient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacman_location_db">
+            <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_location_db">
+              <MappingFragment StoreEntitySet="Pacman_location_db">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="coordinates_x" ColumnName="coordinates_x" />
+                <ScalarProperty Name="coordinates_y" ColumnName="coordinates_y" />
+                <ScalarProperty Name="id_patient" ColumnName="id_patient" />
+                <ScalarProperty Name="id_carer" ColumnName="id_carer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacman_patient_db">
+            <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_patient_db">
+              <MappingFragment StoreEntitySet="Pacman_patient_db">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="device_id" ColumnName="device_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

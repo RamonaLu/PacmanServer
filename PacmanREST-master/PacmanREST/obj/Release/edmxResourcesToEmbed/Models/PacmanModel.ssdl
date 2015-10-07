@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pacmanAndroidNew_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Pacman_carer_db">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone" Type="int" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="address" Type="nvarchar" MaxLength="50" />
+    <Property Name="device_id" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pacman_carer_patient_db">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_carer" Type="int" Nullable="false" />
+    <Property Name="id_patient" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pacman_fence_db">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_location" Type="int" Nullable="false" />
+    <Property Name="radius" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_carer" Type="int" Nullable="false" />
+    <Property Name="id_patient" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pacman_location_db">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="coordinates_x" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="coordinates_y" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id_patient" Type="int" />
+    <Property Name="id_carer" Type="int" />
+  </EntityType>
+  <EntityType Name="Pacman_patient_db">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="15" />
+    <Property Name="device_id" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="pacmanAndroidNew_dbModelStoreContainer">
+    <EntitySet Name="Pacman_carer_db" EntityType="Self.Pacman_carer_db" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pacman_carer_patient_db" EntityType="Self.Pacman_carer_patient_db" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pacman_fence_db" EntityType="Self.Pacman_fence_db" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pacman_location_db" EntityType="Self.Pacman_location_db" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pacman_patient_db" EntityType="Self.Pacman_patient_db" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
