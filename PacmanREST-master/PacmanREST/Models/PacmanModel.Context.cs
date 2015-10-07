@@ -18,7 +18,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
 
-public partial class pacmanAndroidNew_dbEntities : DbContext
+public partial class pacmanAndroidNew_dbEntities : DbContext, IPacmanRESTContext
 {
     public pacmanAndroidNew_dbEntities()
         : base("name=pacmanAndroidNew_dbEntities")
@@ -40,11 +40,16 @@ public partial class pacmanAndroidNew_dbEntities : DbContext
 
     public virtual DbSet<Pacman_location_db> Pacman_location_db { get; set; }
 
-    public virtual DbSet<Pacman_patient_db> Pacman_patient_db { get; set; }
+    public virtual DbSet<Pacman_patient_db> Pacman_patient_dbs { get; set; }
 
     public virtual DbSet<Fence> Fences { get; set; }
 
     public virtual DbSet<FencePoint> FencePoints { get; set; }
+
+    public void MarkAsModified(Pacman_patient_db item)
+    {
+        Entry(item).State = EntityState.Modified;
+    }
 
 }
 

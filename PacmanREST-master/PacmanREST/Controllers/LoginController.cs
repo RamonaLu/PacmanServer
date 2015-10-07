@@ -19,7 +19,7 @@ namespace PacmanREST.Controllers
         // GET: api/Login
         public String GetLogin()
         {
-            return "get fkd";
+            return "";
         }
 
         //GET api/Login/uName
