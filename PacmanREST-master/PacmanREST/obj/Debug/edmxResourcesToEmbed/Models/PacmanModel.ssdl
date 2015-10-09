@@ -1,5 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="pacmanAndroidNew_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Fence">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pacman_carer_dbID" Type="int" Nullable="false" />
+    <Property Name="Pacman_patient_dbID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FencePoint">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FenceID" Type="int" Nullable="false" />
+    <Property Name="XCoordinate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="YCoordinate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
   <EntityType Name="Pacman_carer_db">
     <Key>
       <PropertyRef Name="ID" />
@@ -48,12 +65,25 @@
     <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="phone" Type="nvarchar" MaxLength="15" />
     <Property Name="device_id" Type="nvarchar(max)" />
+    <Property Name="Pacman_patient_dbID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone" Type="nvarchar(max)" />
+    <Property Name="device_id" Type="nvarchar(max)" />
   </EntityType>
   <EntityContainer Name="pacmanAndroidNew_dbModelStoreContainer">
+    <EntitySet Name="Fence" EntityType="Self.Fence" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FencePoint" EntityType="Self.FencePoint" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pacman_carer_db" EntityType="Self.Pacman_carer_db" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pacman_carer_patient_db" EntityType="Self.Pacman_carer_patient_db" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pacman_fence_db" EntityType="Self.Pacman_fence_db" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pacman_location_db" EntityType="Self.Pacman_location_db" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pacman_patient_db" EntityType="Self.Pacman_patient_db" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

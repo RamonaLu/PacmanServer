@@ -34,24 +34,54 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Pacman_location_db">
-      <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_location_db">
-        <MappingFragment StoreEntitySet="Pacman_location_db">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="coordinates_x" ColumnName="coordinates_x" />
-          <ScalarProperty Name="coordinates_y" ColumnName="coordinates_y" />
-          <ScalarProperty Name="id_patient" ColumnName="id_patient" />
-          <ScalarProperty Name="id_carer" ColumnName="id_carer" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Pacman_patient_db">
       <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_patient_db">
         <MappingFragment StoreEntitySet="Pacman_patient_db">
+          <ScalarProperty Name="Pacman_patient_dbID" ColumnName="Pacman_patient_dbID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="device_id" ColumnName="device_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="device_id" ColumnName="device_id" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fences">
+      <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Fence">
+        <MappingFragment StoreEntitySet="Fence">
+          <ScalarProperty Name="Pacman_patient_dbID" ColumnName="Pacman_patient_dbID" />
+          <ScalarProperty Name="Pacman_carer_dbID" ColumnName="Pacman_carer_dbID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FencePoints">
+      <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.FencePoint">
+        <MappingFragment StoreEntitySet="FencePoint">
+          <ScalarProperty Name="YCoordinate" ColumnName="YCoordinate" />
+          <ScalarProperty Name="XCoordinate" ColumnName="XCoordinate" />
+          <ScalarProperty Name="FenceID" ColumnName="FenceID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacman_location_db">
+      <EntityTypeMapping TypeName="pacmanAndroidNew_dbModel.Pacman_location_db">
+        <MappingFragment StoreEntitySet="Pacman_location_db">
+          <ScalarProperty Name="id_carer" ColumnName="id_carer" />
+          <ScalarProperty Name="id_patient" ColumnName="id_patient" />
+          <ScalarProperty Name="coordinates_y" ColumnName="coordinates_y" />
+          <ScalarProperty Name="coordinates_x" ColumnName="coordinates_x" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

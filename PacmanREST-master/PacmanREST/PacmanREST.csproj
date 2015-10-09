@@ -199,6 +199,9 @@
     <Compile Include="Models\Pacman_patient_db.cs">
       <DependentUpon>PacmanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Patient.cs">
+      <DependentUpon>PacmanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

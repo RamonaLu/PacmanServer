@@ -4,12 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="238fe7455dbe474db87b8eba40288edc" Name="Diagram1">
+      <Diagram DiagramId="238fe7455dbe474db87b8eba40288edc" Name="Diagram1" ShowGrid="true" ZoomLevel="108">
         <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_carer_db" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_carer_patient_db" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_carer_patient_db" Width="1.5" PointX="2.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_fence_db" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_location_db" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_patient_db" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_patient_db" Width="1.5" PointX="4.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Patient" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Fence" Width="2.25" PointX="4.25" PointY="3.75" />
+        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.FencePoint" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_location_db" Width="1.5" PointX="2.5" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

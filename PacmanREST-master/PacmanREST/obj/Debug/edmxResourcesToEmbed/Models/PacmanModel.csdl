@@ -30,16 +30,6 @@
     <Property Name="id_carer" Type="Int32" Nullable="false" />
     <Property Name="id_patient" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityType Name="Pacman_location_db">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="coordinates_x" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="coordinates_y" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="id_patient" Type="Int32" />
-    <Property Name="id_carer" Type="Int32" />
-  </EntityType>
   <EntityType Name="Pacman_patient_db">
     <Key>
       <PropertyRef Name="ID" />
@@ -48,12 +38,52 @@
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
     <Property Name="device_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pacman_patient_dbID" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityContainer Name="pacmanAndroidNew_dbEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Pacman_carer_db" EntityType="Self.Pacman_carer_db" />
     <EntitySet Name="Pacman_carer_patient_db" EntityType="Self.Pacman_carer_patient_db" />
     <EntitySet Name="Pacman_fence_db" EntityType="Self.Pacman_fence_db" />
-    <EntitySet Name="Pacman_location_db" EntityType="Self.Pacman_location_db" />
     <EntitySet Name="Pacman_patient_db" EntityType="Self.Pacman_patient_db" />
+    <EntitySet Name="Patients" EntityType="pacmanAndroidNew_dbModel.Patient" />
+    <EntitySet Name="Fences" EntityType="pacmanAndroidNew_dbModel.Fence" />
+    <EntitySet Name="FencePoints" EntityType="pacmanAndroidNew_dbModel.FencePoint" />
+    <EntitySet Name="Pacman_location_db" EntityType="pacmanAndroidNew_dbModel.Pacman_location_db" />
   </EntityContainer>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="device_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Fence">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pacman_carer_dbID" Type="Int32" Nullable="false" />
+    <Property Name="Pacman_patient_dbID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FencePoint">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FenceID" Type="Int32" Nullable="false" />
+    <Property Name="XCoordinate" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="YCoordinate" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pacman_location_db">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="coordinates_x" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="coordinates_y" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="id_patient" Type="Int32" />
+    <Property Name="id_carer" Type="Int32" />
+  </EntityType>
 </Schema>

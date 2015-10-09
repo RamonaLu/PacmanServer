@@ -26,14 +26,14 @@ namespace PacmanREST.Controllers
         // GET: api/Patient
         public IQueryable<Pacman_patient_db> GetPacman_patient_db()
         {
-            return db.Pacman_patient_dbs;
+            return db.Pacman_patient_db;
         }
 
         // GET: api/Patient/5
         [ResponseType(typeof(Pacman_patient_db))]
         public IHttpActionResult GetPacman_patient_db(int id)
         {
-            Pacman_patient_db pacman_patient_db = db.Pacman_patient_dbs.Find(id);
+            Pacman_patient_db pacman_patient_db = db.Pacman_patient_db.Find(id);
             if (pacman_patient_db == null)
             {
                 return NotFound();
@@ -86,7 +86,7 @@ namespace PacmanREST.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Pacman_patient_dbs.Add(pacman_patient_db);
+            db.Pacman_patient_db.Add(pacman_patient_db);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = pacman_patient_db.ID }, pacman_patient_db);
@@ -96,13 +96,13 @@ namespace PacmanREST.Controllers
         [ResponseType(typeof(Pacman_patient_db))]
         public IHttpActionResult DeletePacman_patient_db(int id)
         {
-            Pacman_patient_db pacman_patient_db = db.Pacman_patient_dbs.Find(id);
+            Pacman_patient_db pacman_patient_db = db.Pacman_patient_db.Find(id);
             if (pacman_patient_db == null)
             {
                 return NotFound();
             }
 
-            db.Pacman_patient_dbs.Remove(pacman_patient_db);
+            db.Pacman_patient_db.Remove(pacman_patient_db);
             db.SaveChanges();
 
             return Ok(pacman_patient_db);
@@ -119,7 +119,7 @@ namespace PacmanREST.Controllers
 
         private bool Pacman_patient_dbExists(int id)
         {
-            return db.Pacman_patient_dbs.Count(e => e.ID == id) > 0;
+            return db.Pacman_patient_db.Count(e => e.ID == id) > 0;
         }
     }
 }

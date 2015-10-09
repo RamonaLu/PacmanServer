@@ -98,7 +98,7 @@ namespace PacmanREST.Controllers
             db.SaveChanges();
             
             location = db.Pacman_location_db.Find(location.ID);
-            if ((location.Patient != null) && (location.Patient.Fences != null))
+            /*if ((location.Patient != null) && (location.Patient.Fences != null))
             {
                 foreach (Fence fence in location.Patient.Fences)
                 {
@@ -129,7 +129,7 @@ namespace PacmanREST.Controllers
                 cf.fencey = fenceloc.coordinates_y;
                 cf.radius = fence.radius;
                 cf.distanceCheck();
-            }
+            }*/
             
                         
 
