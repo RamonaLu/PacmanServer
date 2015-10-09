@@ -18,7 +18,7 @@ namespace PacmanREST.Tests
         public void PostProduce_ShouldReturnSameProduct()
         {
             var controller = new PatientController(new TestPacmanRESTContext());
-            var patient = new Pacman_patient_db() { ID = null, device_id = null, name = "MyName", phone = "123456" };
+            var patient = new Pacman_patient_db() {device_id = null, name = "MyName", phone = "123456" };
             var result = controller.PostPacman_patient_db(patient) as CreatedAtRouteNegotiatedContentResult<Pacman_patient_db>;
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Content.ID);

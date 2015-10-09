@@ -113,7 +113,7 @@ namespace PacmanREST.Controllers
             }
 
 
-            if ((location.id_patient != null) && (location != null))
+            if (location != null)
             {
                 checkFence cf = new checkFence();
                 cf.patientx = location.coordinates_x;

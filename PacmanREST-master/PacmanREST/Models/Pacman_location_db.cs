@@ -24,11 +24,9 @@ public partial class Pacman_location_db
 
     public decimal coordinates_y { get; set; }
 
-    public Nullable<int> id_patient { get; set; }
+    public int id_patient { get; set; }
 
-    public Nullable<int> id_carer { get; set; }
-
-    public int Pacman_patient_dbID { get; set; }
+    public int id_carer { get; set; }
 
 
 

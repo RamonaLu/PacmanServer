@@ -9,7 +9,7 @@ namespace PacmanREST.Models
 {
     public interface IPacmanRESTContext : IDisposable
     {
-        DbSet<Pacman_patient_db> Pacman_patient_dbs { get; }
+        DbSet<Pacman_patient_db> Pacman_patient_db { get; }
         int SaveChanges();
         void MarkAsModified(Pacman_patient_db patient);
     }

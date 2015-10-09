@@ -12,10 +12,10 @@ namespace PacmanREST.Tests
     {
         public TestPacmanRESTContext()
         {
-            this.Pacman_patient_dbs = new TestPatientDbSet();
+            this.Pacman_patient_db = new TestPatientDbSet();
         }
 
-        public DbSet<Pacman_patient_db> Pacman_patient_dbs { get; set; }
+        public DbSet<Pacman_patient_db> Pacman_patient_db { get; set; }
 
         public int SaveChanges()
         {
