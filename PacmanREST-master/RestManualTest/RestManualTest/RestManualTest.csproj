@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FENCE.cs" />
     <Compile Include="LOCATION.cs" />
     <Compile Include="patient.cs" />
     <Compile Include="Program.cs" />

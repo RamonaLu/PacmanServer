@@ -27,7 +27,7 @@ namespace RestManualTest
             string apiResult = "";
             using (var client2 = new HttpClient())
             {
-                client2.BaseAddress = new Uri("http://localhost:64746/");
+                client2.BaseAddress = new Uri("http://pacmandementiaaid.azurewebsites.net/");
                 client2.DefaultRequestHeaders.Accept.Clear();
                 client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -40,29 +40,40 @@ namespace RestManualTest
 
                 Console.WriteLine(apiResult);*/
 
-                LOCATION loc = new LOCATION();
+                /*LOCATION loc = new LOCATION();
                 loc.coordinates_x = 1;
                 loc.coordinates_y = 2;
                 loc.id_patient = 1;
-                loc.id_carer = 2;
+                loc.id_carer = 2;*/
+
+                FENCE fence = new FENCE();
+                fence.id_carer = 1;
+                fence.id_patient = 1;
+                fence.id_location = 1;
+                fence.radius = 2.0m;
+                fence.description = "fromManualTest";
 
                 HttpResponseMessage response;
-                response = await client2.PostAsJsonAsync("api/Location",loc);
+                response = await client2.PostAsJsonAsync("api/Fence",fence);
                 if (response.IsSuccessStatusCode)
                 {
                     Console.WriteLine("Success");
                     // Get the URI of the created resource.
-                    Uri patientURL = response.Headers.Location;
-                    //apiResult = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine(patientURL.ToString());
-                    
+                    apiResult = await response.Content.ReadAsStringAsync();
+                    Uri resultURL = response.Headers.Location;
+                    String resultString = resultURL.ToString();
+                    Console.WriteLine(resultString);
+                    int slashPosition = resultString.LastIndexOf("/");
+                    Console.WriteLine("slash pos: " + slashPosition);
+                    string ID = resultString.Substring(slashPosition+1);
+                    Console.WriteLine("ID: " + ID);  
                 }
                 else
                 {
                     Console.WriteLine("Store Failed");
                     Uri patientURL = response.Headers.Location;
                     apiResult = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine(apiResult);
+                    Console.WriteLine("result: "+apiResult);
                 }
 
             }
