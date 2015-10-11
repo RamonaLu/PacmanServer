@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/09/2015 19:01:47
+-- Date Created: 10/11/2015 18:19:38
 -- Generated from EDMX file: C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST\Models\PacmanModel.edmx
 -- --------------------------------------------------
 
@@ -17,6 +17,18 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_FencePacman_carer_db]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Fences] DROP CONSTRAINT [FK_FencePacman_carer_db];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FencePacman_patient_db]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Fences] DROP CONSTRAINT [FK_FencePacman_patient_db];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FenceFencePoint]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FencePoints] DROP CONSTRAINT [FK_FenceFencePoint];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Pacman_location_dbPacman_patient_db]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pacman_location_db] DROP CONSTRAINT [FK_Pacman_location_dbPacman_patient_db];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -36,6 +48,12 @@ IF OBJECT_ID(N'[dbo].[Pacman_location_db]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Pacman_patient_db]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Pacman_patient_db];
+GO
+IF OBJECT_ID(N'[dbo].[Fences]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Fences];
+GO
+IF OBJECT_ID(N'[dbo].[FencePoints]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FencePoints];
 GO
 
 -- --------------------------------------------------

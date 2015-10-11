@@ -45,12 +45,10 @@ public partial class pacmanAndroidNew_dbEntities : DbContext, IPacmanRESTContext
     public virtual DbSet<Fence> Fences { get; set; }
 
     public virtual DbSet<FencePoint> FencePoints { get; set; }
-
-    public void MarkAsModified(Pacman_patient_db item)
-    {
-        Entry(item).State = EntityState.Modified;
-    }
-
+        public void MarkAsModified(Pacman_patient_db item)
+        {
+            Entry(item).State = EntityState.Modified;
+        }
     }
 
 }

@@ -10,6 +10,12 @@
         <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_fence_db" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_location_db" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_patient_db" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Fence" Width="1.5" PointX="7.5" PointY="3.375" />
+        <AssociationConnector Association="pacmanAndroidNew_dbModel.FencePacman_carer_db" />
+        <AssociationConnector Association="pacmanAndroidNew_dbModel.FencePacman_patient_db" />
+        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.FencePoint" Width="1.5" PointX="7.125" PointY="0.75" />
+        <AssociationConnector Association="pacmanAndroidNew_dbModel.FenceFencePoint" />
+        <AssociationConnector Association="pacmanAndroidNew_dbModel.Pacman_location_dbPacman_patient_db" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

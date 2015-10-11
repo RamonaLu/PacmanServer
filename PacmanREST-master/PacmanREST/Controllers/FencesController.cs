@@ -12,44 +12,44 @@ using PacmanREST.Models;
 
 namespace PacmanREST.Controllers
 {
-    public class FenceController : ApiController
+    public class FencesController : ApiController
     {
         private pacmanAndroidNew_dbEntities db = new pacmanAndroidNew_dbEntities();
 
-        // GET: api/Fence
-        public IQueryable<Pacman_fence_db> GetPacman_fence_db()
+        // GET: api/Fences
+        public IQueryable<Fence> GetFences()
         {
-            return db.Pacman_fence_db;
+            return db.Fences;
         }
 
-        // GET: api/Fence/5
-        [ResponseType(typeof(Pacman_fence_db))]
-        public IHttpActionResult GetPacman_fence_db(int id)
+        // GET: api/Fences/5
+        [ResponseType(typeof(Fence))]
+        public IHttpActionResult GetFence(int id)
         {
-            Pacman_fence_db pacman_fence_db = db.Pacman_fence_db.Find(id);
-            if (pacman_fence_db == null)
+            Fence fence = db.Fences.Find(id);
+            if (fence == null)
             {
                 return NotFound();
             }
 
-            return Ok(pacman_fence_db);
+            return Ok(fence);
         }
 
-        // PUT: api/Fence/5
+        // PUT: api/Fences/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPacman_fence_db(int id, Pacman_fence_db pacman_fence_db)
+        public IHttpActionResult PutFence(int id, Fence fence)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != pacman_fence_db.ID)
+            if (id != fence.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(pacman_fence_db).State = EntityState.Modified;
+            db.Entry(fence).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace PacmanREST.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!Pacman_fence_dbExists(id))
+                if (!FenceExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace PacmanREST.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Fence
-        [ResponseType(typeof(Pacman_fence_db))]
-        public IHttpActionResult PostPacman_fence_db(Pacman_fence_db pacman_fence_db)
+        // POST: api/Fences
+        [ResponseType(typeof(Fence))]
+        public IHttpActionResult PostFence(Fence fence)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Pacman_fence_db.Add(pacman_fence_db);
+            db.Fences.Add(fence);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = pacman_fence_db.ID }, pacman_fence_db);
+            return CreatedAtRoute("DefaultApi", new { id = fence.ID }, fence);
         }
 
-        // DELETE: api/Fence/5
-        [ResponseType(typeof(Pacman_fence_db))]
-        public IHttpActionResult DeletePacman_fence_db(int id)
+        // DELETE: api/Fences/5
+        [ResponseType(typeof(Fence))]
+        public IHttpActionResult DeleteFence(int id)
         {
-            Pacman_fence_db pacman_fence_db = db.Pacman_fence_db.Find(id);
-            if (pacman_fence_db == null)
+            Fence fence = db.Fences.Find(id);
+            if (fence == null)
             {
                 return NotFound();
             }
 
-            db.Pacman_fence_db.Remove(pacman_fence_db);
+            db.Fences.Remove(fence);
             db.SaveChanges();
 
-            return Ok(pacman_fence_db);
+            return Ok(fence);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,10 +110,9 @@ namespace PacmanREST.Controllers
             base.Dispose(disposing);
         }
 
-        private bool Pacman_fence_dbExists(int id)
+        private bool FenceExists(int id)
         {
-            return db.Pacman_fence_db.Count(e => e.ID == id) > 0;
+            return db.Fences.Count(e => e.ID == id) > 0;
         }
-
     }
 }

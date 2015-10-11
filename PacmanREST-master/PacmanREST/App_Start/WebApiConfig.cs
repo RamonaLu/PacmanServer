@@ -13,6 +13,8 @@ namespace PacmanREST
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.EnableQuerySupport();
+            
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
