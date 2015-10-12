@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/11/2015 18:19:38
+-- Date Created: 10/12/2015 18:13:23
 -- Generated from EDMX file: C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST\Models\PacmanModel.edmx
 -- --------------------------------------------------
 
@@ -95,8 +95,8 @@ CREATE TABLE [dbo].[Pacman_location_db] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [coordinates_x] decimal(18,0)  NOT NULL,
     [coordinates_y] decimal(18,0)  NOT NULL,
-    [id_patient] int  NOT NULL,
-    [id_carer] int  NOT NULL
+    [id_patient] int  NULL,
+    [id_carer] int  NULL
 );
 GO
 

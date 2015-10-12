@@ -17,7 +17,7 @@ namespace PacmanREST.Tests
         [TestMethod]
         public void PostProduce_ShouldReturnSameProduct()
         {
-            var controller = new PatientController(new TestPacmanRESTContext());
+            var controller = new PatientController(new pacmanAndroidNew_dbEntities());
             var patient = new Pacman_patient_db() {device_id = null, name = "MyName", phone = "123456" };
             var result = controller.PostPacman_patient_db(patient) as CreatedAtRouteNegotiatedContentResult<Pacman_patient_db>;
             Assert.IsNotNull(result);

@@ -11,6 +11,5 @@ namespace PacmanREST.Models
     {
         DbSet<Pacman_patient_db> Pacman_patient_db { get; }
         int SaveChanges();
-        void MarkAsModified(Pacman_patient_db patient);
     }
 }
