@@ -18,17 +18,13 @@ using System;
 public partial class FencePoint
 {
 
-    public int Id { get; set; }
+    public int ID { get; set; }
 
     public int FenceID { get; set; }
 
-    public decimal XCoordinate { get; set; }
+    public decimal Latitude { get; set; }
 
-    public decimal YCoordinate { get; set; }
-
-
-
-    public virtual Fence Fence { get; set; }
+    public decimal Longitude { get; set; }
 
 }
 

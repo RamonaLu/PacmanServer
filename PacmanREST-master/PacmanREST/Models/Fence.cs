@@ -18,30 +18,11 @@ using System;
 public partial class Fence
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Fence()
-    {
-
-        this.FencePoints = new HashSet<FencePoint>();
-
-    }
-
-
     public int ID { get; set; }
 
-    public int Pacman_carer_dbID { get; set; }
+    public int CarerID { get; set; }
 
-    public int Pacman_patient_dbID { get; set; }
-
-
-
-    public virtual Pacman_carer_db Carer { get; set; }
-
-    public virtual Pacman_patient_db Patient { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<FencePoint> FencePoints { get; set; }
+    public int PatientID { get; set; }
 
 }
 

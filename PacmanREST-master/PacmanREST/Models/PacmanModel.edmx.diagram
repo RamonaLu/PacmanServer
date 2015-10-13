@@ -7,7 +7,7 @@
       <Diagram DiagramId="238fe7455dbe474db87b8eba40288edc" Name="Diagram1">
         <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_carer_db" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_carer_patient_db" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_fence_db" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_fence_db" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_location_db" Width="1.5" PointX="3.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Pacman_patient_db" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pacmanAndroidNew_dbModel.Fence" Width="1.5" PointX="7.5" PointY="3.375" />

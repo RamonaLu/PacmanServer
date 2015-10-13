@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/12/2015 18:13:23
+-- Date Created: 10/13/2015 12:02:07
 -- Generated from EDMX file: C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST\Models\PacmanModel.edmx
 -- --------------------------------------------------
 
@@ -82,11 +82,12 @@ GO
 -- Creating table 'Pacman_fence_db'
 CREATE TABLE [dbo].[Pacman_fence_db] (
     [ID] int IDENTITY(1,1) NOT NULL,
-    [id_location] int  NOT NULL,
     [radius] decimal(18,0)  NOT NULL,
     [description] nvarchar(50)  NULL,
     [id_carer] int  NOT NULL,
-    [id_patient] int  NOT NULL
+    [id_patient] int  NOT NULL,
+    [Latitude] float  NOT NULL,
+    [Longitude] float  NOT NULL
 );
 GO
 
@@ -112,17 +113,17 @@ GO
 -- Creating table 'Fences'
 CREATE TABLE [dbo].[Fences] (
     [ID] int IDENTITY(1,1) NOT NULL,
-    [Pacman_carer_dbID] int  NOT NULL,
-    [Pacman_patient_dbID] int  NOT NULL
+    [CarerID] int  NOT NULL,
+    [PatientID] int  NOT NULL
 );
 GO
 
 -- Creating table 'FencePoints'
 CREATE TABLE [dbo].[FencePoints] (
-    [Id] int IDENTITY(1,1) NOT NULL,
+    [ID] int IDENTITY(1,1) NOT NULL,
     [FenceID] int  NOT NULL,
-    [XCoordinate] decimal(18,0)  NOT NULL,
-    [YCoordinate] decimal(18,0)  NOT NULL
+    [Latitude] decimal(18,0)  NOT NULL,
+    [Longitude] decimal(18,0)  NOT NULL
 );
 GO
 
@@ -166,20 +167,20 @@ ADD CONSTRAINT [PK_Fences]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
--- Creating primary key on [Id] in table 'FencePoints'
+-- Creating primary key on [ID] in table 'FencePoints'
 ALTER TABLE [dbo].[FencePoints]
 ADD CONSTRAINT [PK_FencePoints]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
+    PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [Pacman_carer_dbID] in table 'Fences'
+-- Creating foreign key on [CarerID] in table 'Fences'
 ALTER TABLE [dbo].[Fences]
 ADD CONSTRAINT [FK_FencePacman_carer_db]
-    FOREIGN KEY ([Pacman_carer_dbID])
+    FOREIGN KEY ([CarerID])
     REFERENCES [dbo].[Pacman_carer_db]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -188,13 +189,13 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_FencePacman_carer_db'
 CREATE INDEX [IX_FK_FencePacman_carer_db]
 ON [dbo].[Fences]
-    ([Pacman_carer_dbID]);
+    ([CarerID]);
 GO
 
--- Creating foreign key on [Pacman_patient_dbID] in table 'Fences'
+-- Creating foreign key on [PatientID] in table 'Fences'
 ALTER TABLE [dbo].[Fences]
 ADD CONSTRAINT [FK_FencePacman_patient_db]
-    FOREIGN KEY ([Pacman_patient_dbID])
+    FOREIGN KEY ([PatientID])
     REFERENCES [dbo].[Pacman_patient_db]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -203,7 +204,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_FencePacman_patient_db'
 CREATE INDEX [IX_FK_FencePacman_patient_db]
 ON [dbo].[Fences]
-    ([Pacman_patient_dbID]);
+    ([PatientID]);
 GO
 
 -- Creating foreign key on [FenceID] in table 'FencePoints'

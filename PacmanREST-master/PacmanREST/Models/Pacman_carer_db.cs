@@ -18,15 +18,6 @@ using System;
 public partial class Pacman_carer_db
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Pacman_carer_db()
-    {
-
-        this.Fences = new HashSet<Fence>();
-
-    }
-
-
     public int ID { get; set; }
 
     public string name { get; set; }
@@ -38,12 +29,6 @@ public partial class Pacman_carer_db
     public string address { get; set; }
 
     public string device_id { get; set; }
-
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Fence> Fences { get; set; }
 
 }
 

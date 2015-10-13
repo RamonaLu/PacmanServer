@@ -98,35 +98,32 @@ namespace PacmanREST.Controllers
             db.SaveChanges();
             
             location = db.Pacman_location_db.Find(location.ID);
-            if ((location.Patient != null) && (location.Patient.Fences != null))
-            {
-                foreach (Fence fence in location.Patient.Fences)
-                {
-                    var points = fence.FencePoints.OrderBy(x => x.Id).ToList();
-                    var sides = Tuplise(points);
-                    if (!CheckPolygonFence.CheckPointInside(sides, location))
-                    {
-                        //sSendAlarm();
-                    }
+            //if ((location.Patient != null) && (location.Patient.Fences != null))
+            //{
+            //    foreach (Fence fence in location.Patient.Fences)
+            //    {
+            //        var points = fence.FencePoints.OrderBy(x => x.ID).ToList();
+            //        var sides = Tuplise(points);
+            //        if (!CheckPolygonFence.CheckPointInside(sides, location))
+            //        {
+            //            //sSendAlarm();
+            //        }
 
-                }
-            }
+            //    }
+            //}
 
 
             if (location != null)
             {
                 checkFence cf = new checkFence();
                 cf.patientx = location.coordinates_x;
-                cf.patienty = location.coordinates_y; 
+                cf.patienty = location.coordinates_y;
                 var fence = (from f in db.Pacman_fence_db
                              where (f.id_patient == location.ID) && (f.id_carer > 0)
                              orderby f.ID ascending
                              select f).Last();
-                var fenceloc = (from l in db.Pacman_location_db
-                                where l.ID == fence.id_location
-                                select l).First();
-                cf.fencex = fenceloc.coordinates_x;
-                cf.fencey = fenceloc.coordinates_y;
+                cf.fencex = Convert.ToDecimal(fence.Latitude);
+                cf.fencey = Convert.ToDecimal(fence.Longitude);
                 cf.radius = fence.radius;
                 cf.distanceCheck();
             }

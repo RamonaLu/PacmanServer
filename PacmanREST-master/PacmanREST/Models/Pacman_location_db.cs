@@ -28,10 +28,6 @@ public partial class Pacman_location_db
 
     public Nullable<int> id_carer { get; set; }
 
-
-
-    public virtual Pacman_patient_db Patient { get; set; }
-
 }
 
 }

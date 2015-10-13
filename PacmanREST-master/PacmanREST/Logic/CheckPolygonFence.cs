@@ -45,7 +45,7 @@ namespace PacmanREST.Logic
 
         private static bool RayIntersectsSegment(Pacman_location_db point, Tuple<FencePoint, FencePoint> side)
         {
-            if ((point.coordinates_y == side.Item1.YCoordinate) || (point.coordinates_y == side.Item2.YCoordinate))
+            if ((point.coordinates_y == side.Item1.Longitude) || (point.coordinates_y == side.Item2.Longitude))
             {
                 var newPoint = new Pacman_location_db()
                 {
@@ -54,11 +54,11 @@ namespace PacmanREST.Logic
                 };
                 point = newPoint;
             }
-            if ((point.coordinates_y < side.Item1.YCoordinate) || (point.coordinates_y > side.Item2.YCoordinate))
+            if ((point.coordinates_y < side.Item1.Longitude) || (point.coordinates_y > side.Item2.Longitude))
             {
                 return false;
             }
-            else if (point.coordinates_x > Math.Max(side.Item1.XCoordinate, side.Item2.XCoordinate))
+            else if (point.coordinates_x > Math.Max(side.Item1.Latitude, side.Item2.Latitude))
             {
                 return false;
             }
@@ -66,36 +66,30 @@ namespace PacmanREST.Logic
             {
                 decimal m_red;
                 decimal m_blue;
-                if (point.coordinates_x < Math.Min(side.Item1.XCoordinate, side.Item2.XCoordinate))
+                if (point.coordinates_x < Math.Min(side.Item1.Latitude, side.Item2.Latitude))
                 {
                     return true;
                 }
                 else
                 {
-                    if (side.Item1.XCoordinate != side.Item2.XCoordinate)
+                    if (side.Item1.Latitude != side.Item2.Latitude)
                     {
-                        m_red = (side.Item2.YCoordinate - side.Item1.YCoordinate) / (side.Item2.XCoordinate - side.Item1.XCoordinate);
+                        m_red = (side.Item2.Longitude - side.Item1.Longitude) / (side.Item2.Latitude - side.Item1.Latitude);
                     }
                     else
                     {
                         m_red = INFINITY;
                     }
-                    if (side.Item1.XCoordinate != point.coordinates_x)
+                    if (side.Item1.Latitude != point.coordinates_x)
                     {
-                        m_blue = (point.coordinates_y - side.Item1.YCoordinate) / (point.coordinates_x - side.Item1.XCoordinate);
+                        m_blue = (point.coordinates_y - side.Item1.Longitude) / (point.coordinates_x - side.Item1.Latitude);
                     }
                     else
                     {
                         m_blue = INFINITY;
                     }
-                    if (m_blue >= m_red)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+
+                    return (m_blue >= m_red);
                 }
             }
         }

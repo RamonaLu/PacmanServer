@@ -18,17 +18,6 @@ using System;
 public partial class Pacman_patient_db
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Pacman_patient_db()
-    {
-
-        this.Fences = new HashSet<Fence>();
-
-        this.Locations = new HashSet<Pacman_location_db>();
-
-    }
-
-
     public int ID { get; set; }
 
     public string name { get; set; }
@@ -36,16 +25,6 @@ public partial class Pacman_patient_db
     public string phone { get; set; }
 
     public string device_id { get; set; }
-
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Fence> Fences { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Pacman_location_db> Locations { get; set; }
 
 }
 
