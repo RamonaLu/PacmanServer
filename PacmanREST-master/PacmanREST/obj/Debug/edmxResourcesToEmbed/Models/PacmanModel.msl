@@ -26,11 +26,12 @@
       <EntityTypeMapping TypeName="IsTypeOf(pacmanAndroidNew_dbModel.Pacman_fence_db)">
         <MappingFragment StoreEntitySet="Pacman_fence_db">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="id_location" ColumnName="id_location" />
           <ScalarProperty Name="radius" ColumnName="radius" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="id_carer" ColumnName="id_carer" />
           <ScalarProperty Name="id_patient" ColumnName="id_patient" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -59,18 +60,18 @@
       <EntityTypeMapping TypeName="IsTypeOf(pacmanAndroidNew_dbModel.Fence)">
         <MappingFragment StoreEntitySet="Fences">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Pacman_carer_dbID" ColumnName="Pacman_carer_dbID" />
-          <ScalarProperty Name="Pacman_patient_dbID" ColumnName="Pacman_patient_dbID" />
+          <ScalarProperty Name="CarerID" ColumnName="CarerID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="FencePoints">
       <EntityTypeMapping TypeName="IsTypeOf(pacmanAndroidNew_dbModel.FencePoint)">
         <MappingFragment StoreEntitySet="FencePoints">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="FenceID" ColumnName="FenceID" />
-          <ScalarProperty Name="XCoordinate" ColumnName="XCoordinate" />
-          <ScalarProperty Name="YCoordinate" ColumnName="YCoordinate" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

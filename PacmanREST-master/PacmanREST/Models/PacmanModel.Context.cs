@@ -23,7 +23,7 @@ namespace PacmanREST.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            //throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<Pacman_carer_db> Pacman_carer_db { get; set; }

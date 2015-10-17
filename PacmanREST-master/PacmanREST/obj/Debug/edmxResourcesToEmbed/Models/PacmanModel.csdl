@@ -10,7 +10,6 @@
     <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="device_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Fences" Relationship="pacmanAndroidNew_dbModel.FencePacman_carer_db" FromRole="Pacman_carer_db" ToRole="Fence" />
   </EntityType>
   <EntityType Name="Pacman_carer_patient_db">
     <Key>
@@ -25,11 +24,12 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="id_location" Type="Int32" Nullable="false" />
     <Property Name="radius" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="id_carer" Type="Int32" Nullable="false" />
     <Property Name="id_patient" Type="Int32" Nullable="false" />
+    <Property Name="Latitude" Type="Double" Nullable="false" />
+    <Property Name="Longitude" Type="Double" Nullable="false" />
   </EntityType>
   <EntityType Name="Pacman_location_db">
     <Key>
@@ -38,9 +38,8 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="coordinates_x" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="coordinates_y" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="id_patient" Type="Int32" Nullable="false" />
-    <Property Name="id_carer" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Patient" Relationship="pacmanAndroidNew_dbModel.Pacman_location_dbPacman_patient_db" FromRole="Pacman_location_db" ToRole="Pacman_patient_db" />
+    <Property Name="id_patient" Type="Int32" Nullable="true" />
+    <Property Name="id_carer" Type="Int32" />
   </EntityType>
   <EntityType Name="Pacman_patient_db">
     <Key>
@@ -50,10 +49,8 @@
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
     <Property Name="device_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Fences" Relationship="pacmanAndroidNew_dbModel.FencePacman_patient_db" FromRole="Pacman_patient_db" ToRole="Fence" />
-    <NavigationProperty Name="Locations" Relationship="pacmanAndroidNew_dbModel.Pacman_location_dbPacman_patient_db" FromRole="Pacman_patient_db" ToRole="Pacman_location_db" />
   </EntityType>
-  <EntityContainer Name="pacmanAndroidNew_dbEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="pacmanAndroidNew_dbEntities" annotation:LazyLoadingEnabled="false">
     <EntitySet Name="Pacman_carer_db" EntityType="Self.Pacman_carer_db" />
     <EntitySet Name="Pacman_carer_patient_db" EntityType="Self.Pacman_carer_patient_db" />
     <EntitySet Name="Pacman_fence_db" EntityType="Self.Pacman_fence_db" />
@@ -83,11 +80,8 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <NavigationProperty Name="Carer" Relationship="pacmanAndroidNew_dbModel.FencePacman_carer_db" FromRole="Fence" ToRole="Pacman_carer_db" />
-    <Property Name="Pacman_carer_dbID" Type="Int32" Nullable="false" />
-    <Property Name="Pacman_patient_dbID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Patient" Relationship="pacmanAndroidNew_dbModel.FencePacman_patient_db" FromRole="Fence" ToRole="Pacman_patient_db" />
-    <NavigationProperty Name="FencePoints" Relationship="pacmanAndroidNew_dbModel.FenceFencePoint" FromRole="Fence" ToRole="FencePoint" />
+    <Property Name="CarerID" Type="Int32" Nullable="false" />
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FencePacman_carer_db">
     <End Type="pacmanAndroidNew_dbModel.Fence" Role="Fence" Multiplicity="*" />
@@ -97,7 +91,7 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Fence">
-        <PropertyRef Name="Pacman_carer_dbID" />
+        <PropertyRef Name="CarerID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -109,19 +103,18 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Fence">
-        <PropertyRef Name="Pacman_patient_dbID" />
+        <PropertyRef Name="PatientID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityType Name="FencePoint">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <NavigationProperty Name="Fence" Relationship="pacmanAndroidNew_dbModel.FenceFencePoint" FromRole="FencePoint" ToRole="Fence" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="FenceID" Type="Int32" Nullable="false" />
-    <Property Name="XCoordinate" Type="Decimal" Nullable="false" />
-    <Property Name="YCoordinate" Type="Decimal" Nullable="false" />
+    <Property Name="Latitude" Type="Decimal" Nullable="false" />
+    <Property Name="Longitude" Type="Decimal" Nullable="false" />
   </EntityType>
   <Association Name="FenceFencePoint">
     <End Type="pacmanAndroidNew_dbModel.Fence" Role="Fence" Multiplicity="1" />
@@ -137,7 +130,7 @@
   </Association>
   <Association Name="Pacman_location_dbPacman_patient_db">
     <End Type="pacmanAndroidNew_dbModel.Pacman_location_db" Role="Pacman_location_db" Multiplicity="*" />
-    <End Type="pacmanAndroidNew_dbModel.Pacman_patient_db" Role="Pacman_patient_db" Multiplicity="1" />
+    <End Type="pacmanAndroidNew_dbModel.Pacman_patient_db" Role="Pacman_patient_db" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Pacman_patient_db">
         <PropertyRef Name="ID" />

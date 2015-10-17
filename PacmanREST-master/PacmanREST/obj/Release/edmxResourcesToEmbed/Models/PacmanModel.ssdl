@@ -49,11 +49,12 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="id_location" Type="int" Nullable="false" />
     <Property Name="radius" Type="decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="description" Type="nvarchar" Nullable="true" MaxLength="50" />
     <Property Name="id_carer" Type="int" Nullable="false" />
     <Property Name="id_patient" Type="int" Nullable="false" />
+    <Property Name="Latitude" Type="float" Nullable="false" />
+    <Property Name="Longitude" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="Pacman_location_db">
     <Key>
@@ -62,8 +63,8 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="coordinates_x" Type="decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="coordinates_y" Type="decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="id_patient" Type="int" Nullable="false" />
-    <Property Name="id_carer" Type="int" Nullable="false" />
+    <Property Name="id_patient" Type="int" Nullable="true" />
+    <Property Name="id_carer" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Pacman_patient_db">
     <Key>
@@ -79,17 +80,17 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Pacman_carer_dbID" Type="int" Nullable="false" />
-    <Property Name="Pacman_patient_dbID" Type="int" Nullable="false" />
+    <Property Name="CarerID" Type="int" Nullable="false" />
+    <Property Name="PatientID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="FencePoints">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FenceID" Type="int" Nullable="false" />
-    <Property Name="XCoordinate" Type="decimal" Nullable="false" />
-    <Property Name="YCoordinate" Type="decimal" Nullable="false" />
+    <Property Name="Latitude" Type="decimal" Nullable="false" />
+    <Property Name="Longitude" Type="decimal" Nullable="false" />
   </EntityType>
   <Association Name="FencePacman_carer_db">
     <End Role="Fence" Type="pacmanAndroidNew_dbModel.Store.Fences" Multiplicity="*" />
@@ -99,7 +100,7 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Fence">
-        <PropertyRef Name="Pacman_carer_dbID" />
+        <PropertyRef Name="CarerID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -111,7 +112,7 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Fence">
-        <PropertyRef Name="Pacman_patient_dbID" />
+        <PropertyRef Name="PatientID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -129,7 +130,7 @@
   </Association>
   <Association Name="Pacman_location_dbPacman_patient_db">
     <End Role="Pacman_location_db" Type="pacmanAndroidNew_dbModel.Store.Pacman_location_db" Multiplicity="*" />
-    <End Role="Pacman_patient_db" Type="pacmanAndroidNew_dbModel.Store.Pacman_patient_db" Multiplicity="1" />
+    <End Role="Pacman_patient_db" Type="pacmanAndroidNew_dbModel.Store.Pacman_patient_db" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Pacman_patient_db">
         <PropertyRef Name="ID" />
