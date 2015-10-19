@@ -50,6 +50,45 @@ namespace PacmanREST.Controllers
             return Ok(locs);
         }
 
+        [Route("api/Location/testAlarm/{id}")]
+        [HttpGet]
+        [ResponseType(typeof(Pacman_location_db))]
+        public IHttpActionResult GettestAlarm(int id)
+        {
+            var location = (from l in db.Pacman_location_db
+                        where (l.ID == id)
+                        orderby l.ID descending
+                        select l).First();
+
+            if (location != null)
+            {
+                checkFence cf = new checkFence();
+                cf.patientx = location.coordinates_x;
+                cf.patienty = location.coordinates_y;
+                var fence = (from f in db.Pacman_fence_db
+                             where (f.id_patient == location.id_patient)
+                             orderby f.ID descending
+                             select f).FirstOrDefault();
+                cf.fencex = Convert.ToDecimal(fence.Latitude);
+                cf.fencey = Convert.ToDecimal(fence.Longitude);
+                cf.radius = fence.radius;
+
+
+                var client = (from c in db.Pacman_carer_db
+                              where c.ID == location.id_carer
+                              select c).FirstOrDefault();
+                cf.careDeviceId = client.device_id;
+
+                var pncl = (from c in db.Pacman_patient_db
+                            where c.ID == location.id_patient
+                            select c).FirstOrDefault();
+                cf.patientName = pncl.name;
+
+                cf.distanceCheck();
+            }
+            return Ok("Alarm OK?");
+        }
+
         // PUT: api/Location/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPacman_location_db(int id, Pacman_location_db pacman_location_db)

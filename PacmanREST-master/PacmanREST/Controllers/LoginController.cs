@@ -38,5 +38,20 @@ namespace PacmanREST.Controllers
             }
             
         }
+        [Route("api/LoginPatient/{uName}/{uPass}")]
+        [HttpGet]
+        public IHttpActionResult GetLoginPatient(String uName, String uPass)
+        {
+            var user = db.Pacman_patient_db.FirstOrDefault(i => i.name.Equals(uName));
+            if (user.phone.ToString() == uPass)
+            {
+                return Ok(user);
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+        }
     }
 }
