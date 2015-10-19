@@ -184,6 +184,7 @@
     </Compile>
     <Compile Include="Logic\CheckPolygonFence.cs" />
     <Compile Include="Logic\PushbotsAll.cs" />
+    <Compile Include="Logic\PushbotsOne.cs" />
     <Compile Include="Models\Fence.cs">
       <DependentUpon>PacmanModel.tt</DependentUpon>
     </Compile>

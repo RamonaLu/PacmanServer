@@ -113,20 +113,32 @@ namespace PacmanREST.Controllers
             //}
 
 
-            /*if (location != null)
+            if (location != null)
             {
                 checkFence cf = new checkFence();
                 cf.patientx = location.coordinates_x;
                 cf.patienty = location.coordinates_y;
                 var fence = (from f in db.Pacman_fence_db
-                             were (f.id_patient == location.ID) && (f.id_carer > 0)
+                             where (f.id_patient == location.ID) && (f.id_carer > 0)
                              orderby f.ID ascending
                              select f).Last();
                 cf.fencex = Convert.ToDecimal(fence.Latitude);
                 cf.fencey = Convert.ToDecimal(fence.Longitude);
                 cf.radius = fence.radius;
+
+
+                var client = (from c in db.Pacman_carer_db
+                              where c.ID == location.id_carer
+                              select c).FirstOrDefault();
+                cf.careDeviceId = client.device_id;
+
+                var pncl = (from c in db.Pacman_patient_db
+                            where c.ID == location.id_patient
+                            select c).FirstOrDefault();
+                cf.patientName = pncl.name;
+
                 cf.distanceCheck();
-            }*/
+            }
             
                         
 
