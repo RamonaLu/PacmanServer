@@ -89,6 +89,7 @@ namespace PacmanREST.Controllers
         [ResponseType(typeof(Pacman_location_db))]
         public IHttpActionResult PostPacman_location_db(Pacman_location_db location)
         {
+            location.ID = null;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

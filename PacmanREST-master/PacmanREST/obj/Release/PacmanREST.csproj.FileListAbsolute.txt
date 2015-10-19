@@ -279,6 +279,5 @@ C:\Users\Geoffrey\Documents\IFN372\PacmanServer\PacmanREST-master\PacmanREST\bin
 C:\Users\Geoffrey\Documents\IFN372\PacmanServer\PacmanREST-master\PacmanREST\bin\ru\System.Spatial.resources.dll
 C:\Users\Geoffrey\Documents\IFN372\PacmanServer\PacmanREST-master\PacmanREST\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Geoffrey\Documents\IFN372\PacmanServer\PacmanREST-master\PacmanREST\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\Geoffrey\Documents\IFN372\PacmanServer\PacmanREST-master\PacmanREST\obj\Release\PacmanREST.csprojResolveAssemblyReference.cache
 C:\Users\Geoffrey\Documents\IFN372\PacmanServer\PacmanREST-master\PacmanREST\obj\Release\PacmanREST.dll
 C:\Users\Geoffrey\Documents\IFN372\PacmanServer\PacmanREST-master\PacmanREST\obj\Release\PacmanREST.pdb
