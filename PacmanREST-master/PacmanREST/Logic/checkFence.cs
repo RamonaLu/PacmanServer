@@ -47,16 +47,20 @@ namespace PacmanREST.Logic
             double ysquare = (double)((patienty - fencey) * (patienty - fencey));
             double dist = Math.Sqrt((xsquare + ysquare));
             double r = (double)radius;
+            apiResult = "distance: " + dist;
             if (dist > r)
             {
                 alarm();
             }
+            
         }
+
         public async Task alarm()
         {
 
             using (var client2 = new HttpClient())
-            /* {
+            {
+                /*
                  client2.BaseAddress = new Uri("https://api.pushbots.com/push/all");
                  client2.DefaultRequestHeaders.Accept.Clear();
                  client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -78,13 +82,11 @@ namespace PacmanREST.Logic
                  {
                      apiResult = "in ERROR " + await response.Content.ReadAsStringAsync();
                  }               
-             }*/
-            {
-
+             */
                 
 
-                checkFence cf = new checkFence();
-                string token=cf.careDeviceId;
+                
+                string token=careDeviceId;
                 client2.BaseAddress = new Uri("https://api.pushbots.com/push/one");
                 client2.DefaultRequestHeaders.Accept.Clear();
                 client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -94,7 +96,7 @@ namespace PacmanREST.Logic
                 onePush.platform = 1;
                 // onePush.schedule = "2015-09-08T01:20:00";
                 onePush.token = token;
-                onePush.msg = cf.patientName + "is now out of fence ";
+                onePush.msg = patientName + "is now out of fence ";
                 Console.WriteLine("before repsonse");
                 HttpResponseMessage response = await client2.PostAsJsonAsync("", onePush);
                 Console.WriteLine("after response");

@@ -55,6 +55,7 @@ namespace PacmanREST.Controllers
         [ResponseType(typeof(Pacman_location_db))]
         public IHttpActionResult GettestAlarm(int id)
         {
+            checkFence cf = new checkFence();
             var location = (from l in db.Pacman_location_db
                         where (l.ID == id)
                         orderby l.ID descending
@@ -62,9 +63,11 @@ namespace PacmanREST.Controllers
 
             if (location != null)
             {
-                checkFence cf = new checkFence();
-                cf.patientx = location.coordinates_x;
-                cf.patienty = location.coordinates_y;
+                
+                cf.patientx = 1;
+                cf.patienty = 2;
+                //cf.patientx = location.coordinates_x;
+                //cf.patienty = location.coordinates_y;
                 var fence = (from f in db.Pacman_fence_db
                              where (f.id_patient == location.id_patient)
                              orderby f.ID descending
@@ -85,8 +88,13 @@ namespace PacmanREST.Controllers
                 cf.patientName = pncl.name;
 
                 cf.distanceCheck();
+                return Ok(cf.apiResult);
             }
-            return Ok("Alarm OK?");
+            else
+            {
+                return Ok("nullled?");
+            }
+            
         }
 
         // PUT: api/Location/5
@@ -159,9 +167,9 @@ namespace PacmanREST.Controllers
                 cf.patientx = location.coordinates_x;
                 cf.patienty = location.coordinates_y;
                 var fence = (from f in db.Pacman_fence_db
-                             where (f.id_patient == location.ID) && (f.id_carer > 0)
-                             orderby f.ID ascending
-                             select f).Last();
+                             where (f.id_patient == location.id_patient)
+                             orderby f.ID descending
+                             select f).FirstOrDefault();
                 cf.fencex = Convert.ToDecimal(fence.Latitude);
                 cf.fencey = Convert.ToDecimal(fence.Longitude);
                 cf.radius = fence.radius;
