@@ -136,7 +136,10 @@ namespace PacmanREST.Controllers
         [ResponseType(typeof(Pacman_location_db))]
         public IHttpActionResult PostPacman_location_db(Pacman_location_db location)
         {
-            location.ID = null;
+            if (location != null)
+            {
+                location.ID = null;
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -146,21 +149,7 @@ namespace PacmanREST.Controllers
             db.SaveChanges();
             
             location = db.Pacman_location_db.Find(location.ID);
-            //if ((location.Patient != null) && (location.Patient.Fences != null))
-            //{
-            //    foreach (Fence fence in location.Patient.Fences)
-            //    {
-            //        var points = fence.FencePoints.OrderBy(x => x.ID).ToList();
-            //        var sides = Tuplise(points);
-            //        if (!CheckPolygonFence.CheckPointInside(sides, location))
-            //        {
-            //            //sSendAlarm();
-            //        }
-
-            //    }
-            //}
-
-
+        
             if (location != null)
             {
                 checkFence cf = new checkFence();
@@ -170,22 +159,53 @@ namespace PacmanREST.Controllers
                              where (f.id_patient == location.id_patient)
                              orderby f.ID descending
                              select f).FirstOrDefault();
-                cf.fencex = Convert.ToDecimal(fence.Latitude);
-                cf.fencey = Convert.ToDecimal(fence.Longitude);
-                cf.radius = fence.radius;
+                if (fence != null)
+                {
+                    cf.fencex = Convert.ToDecimal(fence.Latitude);
+                    cf.fencey = Convert.ToDecimal(fence.Longitude);
+                    cf.radius = fence.radius;
 
 
-                var client = (from c in db.Pacman_carer_db
-                              where c.ID == location.id_carer
-                              select c).FirstOrDefault();
-                cf.careDeviceId = client.device_id;
+                    var client = (from c in db.Pacman_carer_db
+                                  where c.ID == location.id_carer
+                                  select c).FirstOrDefault();
+                    cf.careDeviceId = client.device_id;
 
-                var pncl = (from c in db.Pacman_patient_db
-                            where c.ID == location.id_patient
-                            select c).FirstOrDefault();
-                cf.patientName = pncl.name;
+                    var pncl = (from c in db.Pacman_patient_db
+                                where c.ID == location.id_patient
+                                select c).FirstOrDefault();
+                    cf.patientName = pncl.name;
 
-                cf.distanceCheck();
+                    cf.distanceCheck();
+                }
+                
+                try
+                {
+                    var fences = from patient in db.Pacman_patient_db
+                                 join f in db.Fences on patient.ID equals f.ID
+                                 where patient.ID == location.id_patient
+                                 select f;
+
+                    foreach (var f in fences)
+                    {
+                        var points = from fencePoint in db.FencePoints
+                                     where fencePoint.FenceID == f.ID
+                                     orderby fencePoint.ID
+                                     select fencePoint;
+
+                        var sides = Tuplise(points.ToList());
+
+                        if (!CheckPolygonFence.CheckPointInside(sides, location))
+                        {
+                            cf.alarm();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+
             }
             
                         
