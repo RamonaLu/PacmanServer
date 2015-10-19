@@ -18,7 +18,7 @@ using System;
 public partial class Pacman_location_db
 {
 
-    public int ID { get; set; }
+    public int? ID { get; set; }
 
     public decimal coordinates_x { get; set; }
 

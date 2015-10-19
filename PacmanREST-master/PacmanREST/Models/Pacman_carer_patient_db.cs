@@ -18,7 +18,7 @@ using System;
 public partial class Pacman_carer_patient_db
 {
 
-    public int ID { get; set; }
+    public int? ID { get; set; }
 
     public int id_carer { get; set; }
 
