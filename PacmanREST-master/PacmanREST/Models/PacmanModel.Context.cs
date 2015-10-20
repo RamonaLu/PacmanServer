@@ -13,7 +13,7 @@ namespace PacmanREST.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class pacmanAndroidNew_dbEntities : DbContext
+    public partial class pacmanAndroidNew_dbEntities : DbContext, IPacmanRESTContext
     {
         public pacmanAndroidNew_dbEntities()
             : base("name=pacmanAndroidNew_dbEntities")
@@ -33,5 +33,41 @@ namespace PacmanREST.Models
         public virtual DbSet<Pacman_patient_db> Pacman_patient_db { get; set; }
         public virtual DbSet<Fence> Fences { get; set; }
         public virtual DbSet<FencePoint> FencePoints { get; set; }
+
+        public void MarkAsModifiedPacman_patient_db(Pacman_patient_db item)
+        {
+            Entry(item).State = EntityState.Modified;
+        }
+        public void MarkAsModifiedPacman_carer_db(Pacman_carer_db item)
+        {
+            Entry(item).State = EntityState.Modified;
+        }
+        public void MarkAsModifiedPacman_carer_patient_db(Pacman_carer_patient_db item)
+        {
+            Entry(item).State = EntityState.Modified;
+        }
+        public void MarkAsModifiedPacman_fence_db(Pacman_fence_db item)
+        {
+            Entry(item).State = EntityState.Modified;
+        }
+        public void MarkAsModifiedPacman_location_db(Pacman_location_db item)
+        {
+            Entry(item).State = EntityState.Modified;
+        }
+        public void MarkAsModifiedFence(Fence item)
+        {
+            Entry(item).State = EntityState.Modified;
+        }
+        public void MarkAsModifiedFencePoint(FencePoint item)  
+        {
+            Entry(item).State = EntityState.Modified;
+        }
+        
+        
+        
+        
+        
+        
+        
     }
 }

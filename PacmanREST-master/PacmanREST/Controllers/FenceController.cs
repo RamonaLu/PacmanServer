@@ -14,7 +14,14 @@ namespace PacmanREST.Controllers
 {
     public class FenceController : ApiController
     {
-        private pacmanAndroidNew_dbEntities db = new pacmanAndroidNew_dbEntities();
+        private IPacmanRESTContext db = new pacmanAndroidNew_dbEntities();
+
+        public FenceController() { }
+
+        public FenceController(IPacmanRESTContext context)
+        {
+            db = context;
+        }
 
         // GET: api/Fence
         public IQueryable<Pacman_fence_db> GetPacman_fence_db()
@@ -49,7 +56,8 @@ namespace PacmanREST.Controllers
                 return BadRequest();
             }
 
-            db.Entry(pacman_fence_db).State = EntityState.Modified;
+            //db.Entry(pacman_fence_db).State = EntityState.Modified;
+            db.MarkAsModifiedPacman_fence_db(pacman_fence_db);
 
             try
             {

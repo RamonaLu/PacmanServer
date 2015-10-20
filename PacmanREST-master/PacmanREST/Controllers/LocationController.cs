@@ -15,7 +15,14 @@ namespace PacmanREST.Controllers
 {
     public class LocationController : ApiController
     {
-        private pacmanAndroidNew_dbEntities db = new pacmanAndroidNew_dbEntities();
+        private IPacmanRESTContext db = new pacmanAndroidNew_dbEntities();
+
+        public LocationController() { }
+
+        public LocationController(IPacmanRESTContext context)
+        {
+            db = context;
+        }
 
         // GET: api/Location
         public IQueryable<Pacman_location_db> GetPacman_location_db()
@@ -135,7 +142,8 @@ namespace PacmanREST.Controllers
                 return BadRequest();
             }
 
-            db.Entry(pacman_location_db).State = EntityState.Modified;
+            //db.Entry(pacman_location_db).State = EntityState.Modified;
+            db.MarkAsModifiedPacman_location_db(pacman_location_db);
 
             try
             {
@@ -205,25 +213,29 @@ namespace PacmanREST.Controllers
                 
                 try
                 {
-                    var p = (from f in db.Fences
+                    var pFence  = (from f in db.Fences
                              where f.PatientID == location.id_patient
                              orderby f.ID descending
                              select f).FirstOrDefault();
+                    
+                    
+                    if (pFence != null) {
+                        var points = from fencePoint in db.FencePoints
+                                     where fencePoint.FenceID == pFence.ID
+                                     orderby fencePoint.ID
+                                     select fencePoint;
 
-                    var points = from fencePoint in db.FencePoints
-                                 where fencePoint.FenceID == p.ID
-                                 orderby fencePoint.ID
-                                 select fencePoint;
-
-                    var sides = Tuplise(points.ToList());
+                        var sides = Tuplise(points.ToList());
 
 
-                    if (!CheckPolygonFence.CheckPointInside(sides, location))
-                    {
+                        if (!CheckPolygonFence.CheckPointInside(sides, location))
+                        {
 
-                        cf.alarm();
+                            cf.alarm();
 
+                        }
                     }
+                    
                 }
                 catch (Exception ex)
                 {

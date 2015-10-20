@@ -8,7 +8,7 @@ namespace PacmanREST.Logic
 {
     public class CheckPolygonFence
     {
-        private const decimal EPSILON = 2;
+        private const decimal EPSILON = 0.01m;
         private const decimal INFINITY = decimal.MaxValue;
 
         public static bool CheckPointInside(IEnumerable<Tuple<FencePoint, FencePoint>> sides, Pacman_location_db point)

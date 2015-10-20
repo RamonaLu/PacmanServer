@@ -14,7 +14,14 @@ namespace PacmanREST.Controllers
 {
     public class CarerController : ApiController
     {
-        private pacmanAndroidNew_dbEntities db = new pacmanAndroidNew_dbEntities();
+        private IPacmanRESTContext db = new pacmanAndroidNew_dbEntities();
+
+        public CarerController() { }
+
+        public CarerController(IPacmanRESTContext context)
+        {
+            db = context;
+        }
 
         // GET: api/Carer
         public IQueryable<Pacman_carer_db> GetPacman_carer_db()
@@ -49,7 +56,8 @@ namespace PacmanREST.Controllers
                 return BadRequest();
             }
 
-            db.Entry(pacman_carer_db).State = EntityState.Modified;
+            //db.Entry(pacman_carer_db).State = EntityState.Modified;
+            db.MarkAsModifiedPacman_carer_db(pacman_carer_db);
 
             try
             {

@@ -14,11 +14,11 @@ namespace PacmanREST.Controllers
 {
     public class PatientController : ApiController
     {
-        private pacmanAndroidNew_dbEntities db = new pacmanAndroidNew_dbEntities();
+        private IPacmanRESTContext db = new pacmanAndroidNew_dbEntities();
 
         public PatientController() { }
 
-        public PatientController(pacmanAndroidNew_dbEntities context)
+        public PatientController(IPacmanRESTContext context)
         {
             db = context;
         }
@@ -56,7 +56,9 @@ namespace PacmanREST.Controllers
                 return BadRequest();
             }
 
-            db.Entry(pacman_patient_db).State = EntityState.Modified;
+            //db.Entry(pacman_patient_db).State = EntityState.Modified;
+            db.MarkAsModifiedPacman_patient_db(pacman_patient_db);
+
             try
             {
                 db.SaveChanges();

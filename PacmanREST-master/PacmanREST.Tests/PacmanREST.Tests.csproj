@@ -75,7 +75,14 @@
   <ItemGroup>
     <Compile Include="TestDbSet.cs" />
     <Compile Include="TestPacmanRESTContext.cs" />
+    <Compile Include="TestCarerController.cs" />
     <Compile Include="TestPatientController.cs" />
+    <Compile Include="TestCarerDbSet.cs" />
+    <Compile Include="TestCarerPatientDbSet.cs" />
+    <Compile Include="TestFencePointstDbSet.cs" />
+    <Compile Include="TestFencestDbSet.cs" />
+    <Compile Include="TestLocationDbSet.cs" />
+    <Compile Include="TestFenceDbSet.cs" />
     <Compile Include="TestPatientDbSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
