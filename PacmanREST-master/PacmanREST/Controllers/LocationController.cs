@@ -226,22 +226,10 @@ namespace PacmanREST.Controllers
                                      select fencePoint;
 
                         var sides = Tuplise(points.ToList());
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 
                         if (!CheckPolygonFence.CheckPointInside(sides, location))
                         {
-
-<<<<<<< HEAD
-                        if (!CheckPolygonFence.CheckPointInside(sides, location))
-                        {
-
-=======
->>>>>>> origin/master
                             cf.alarm();
-
                         }
                     }
                     
