@@ -99,7 +99,6 @@ C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debu
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\PacmanREST.Tests.pdb
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\EntityFramework.dll
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\PacmanREST.dll
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\System.Net.Http.Formatting.dll
@@ -115,7 +114,6 @@ C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debu
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\PacmanREST.pdb
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\EntityFramework.xml
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\Ramona\Desktop\PacmanServer\PacmanREST-master\PacmanREST.Tests\bin\Debug\System.Web.Http.xml
